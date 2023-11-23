@@ -5,7 +5,7 @@ const themeButton = document.querySelector("#theme-btn");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = null;
-const API_KEY = "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" //"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"; // Paste your API key here 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  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
+const API_KEY = "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" //"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"; // Paste your API key here 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  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
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
@@ -17,8 +17,9 @@ const loadDataFromLocalstorage = () => {
     const defaultText = `<div class="default-text">
                             
                             <h1></h1>
-                            <img src="Assets/Apollo-ai-logo.jpg" alt="logo" height="450px">
-                            <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
+                            <img src="Assets/Apollo-ai-logo-trans.png" alt="logo">
+                            <h1 style="color: #B1915C; font-family: 'EB Garamond', serif;">APOLLO</h1>
+                            <p style="color: #B1915C;" >Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
                         </div>`
 
     chatContainer.innerHTML = localStorage.getItem("all-chats") || defaultText;
@@ -83,7 +84,7 @@ const showTypingAnimation = () => {
     // Display the typing animation and call the getChatResponse function
     const html = `<div class="chat-content">
     <div class="chat-details">
-        <img src="Assets/Apollo-ai-small (1).jpg" alt="chatbot-img">
+        <img src="Assets/Apollo-ai-logo-trans.png" alt="chatbot-img">
         <div class="typing-animation">
             <div class="typing-dot" style="--delay: 0.2s"></div>
             <div class="typing-dot" style="--delay: 0.3s"></div>
