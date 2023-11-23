@@ -1,6 +1,3 @@
-/* 
-
-/* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 * {
   margin: 0;
@@ -9,14 +6,14 @@
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --text-color: #FFFFFF;
-  --icon-color: #ACACBE;
+  --text-color: #ae8f59;
+  --icon-color: #ae8f59;
   --icon-hover-bg: #5b5e71;
   --placeholder-color: #dcdcdc;
-  --outgoing-chat-bg: #343541;
-  --incoming-chat-bg: #444654;
-  --outgoing-chat-border: #343541;
-  --incoming-chat-border: #444654;
+  --outgoing-chat-bg: #141323;
+  --incoming-chat-bg: #201935;
+  --outgoing-chat-border: #01110A;
+  --incoming-chat-border: #ae8f59;
 }
 .light-mode {
   --text-color: #343541;
