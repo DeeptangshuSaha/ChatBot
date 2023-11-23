@@ -5,7 +5,7 @@ const themeButton = document.querySelector("#theme-btn");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = null;
-const API_KEY = "PASTE-YOUR-API-KEY-HERE"; // Paste your API key here
+const API_KEY = "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" //"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"; // Paste your API key here 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  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
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
@@ -55,6 +55,7 @@ const getChatResponse = async (incomingChatDiv) => {
     // Send POST request to API, get response and set the reponse as paragraph element text
     try {
         const response = await (await fetch(API_URL, requestOptions)).json();
+        console.log(response);
         pElement.textContent = response.choices[0].text.trim();
     } catch (error) { // Add error class to the paragraph element and set error text
         pElement.classList.add("error");
