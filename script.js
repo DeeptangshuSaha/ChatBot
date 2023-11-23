@@ -5,7 +5,7 @@ const themeButton = document.querySelector("#theme-btn");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = null;
-const API_KEY = "PASTE-YOUR-API-KEY-HERE"; // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
@@ -15,7 +15,9 @@ const loadDataFromLocalstorage = () => {
     themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 
     const defaultText = `<div class="default-text">
-                            <h1>ChatBot</h1>
+                            
+                            <h1></h1>
+                            <img src="Assets/Apollo-ai-logo.jpg" alt="logo" height="450px">
                             <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
                         </div>`
 
@@ -79,16 +81,16 @@ const copyResponse = (copyBtn) => {
 const showTypingAnimation = () => {
     // Display the typing animation and call the getChatResponse function
     const html = `<div class="chat-content">
-                    <div class="chat-details">
-                        <img src="images/chatbot.jpg" alt="chatbot-img">
-                        <div class="typing-animation">
-                            <div class="typing-dot" style="--delay: 0.2s"></div>
-                            <div class="typing-dot" style="--delay: 0.3s"></div>
-                            <div class="typing-dot" style="--delay: 0.4s"></div>
-                        </div>
-                    </div>
-                    <span onclick="copyResponse(this)" class="material-symbols-rounded">content_copy</span>
-                </div>`;
+    <div class="chat-details">
+        <img src="Assets/Apollo-ai-small (1).jpg" alt="chatbot-img">
+        <div class="typing-animation">
+            <div class="typing-dot" style="--delay: 0.2s"></div>
+            <div class="typing-dot" style="--delay: 0.3s"></div>
+            <div class="typing-dot" style="--delay: 0.4s"></div>
+        </div>
+    </div>
+    <span onclick="copyResponse(this)" class="material-symbols-rounded">content_copy</span>
+</div>`;
     // Create an incoming chat div with typing animation and append it to chat container
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
@@ -105,11 +107,11 @@ const handleOutgoingChat = () => {
     chatInput.style.height = `${initialInputHeight}px`;
 
     const html = `<div class="chat-content">
-                    <div class="chat-details">
-                        <img src="images/user.jpg" alt="user-img">
-                        <p>${userText}</p>
-                    </div>
-                </div>`;
+    <div class="chat-details">
+        <img src="Assets/user.png" alt="user-img">
+        <p>${userText}</p>
+    </div>
+</div>`;
 
     // Create an outgoing chat div with user's message and append it to chat container
     const outgoingChatDiv = createChatElement(html, "outgoing");
