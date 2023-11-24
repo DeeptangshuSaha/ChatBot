@@ -57,8 +57,7 @@ const getChatResponse = async (incomingChatDiv) => {
 
     // Send POST request to API, get response and set the reponse as paragraph element text
     try {
-        const response = await (await fetch(API_URL, requestOptions)).json();
-        console.log(response);
+        const response = await (await fetch(API_URL, requestOptions)).json
         pElement.textContent = response.choices[0].text.trim();
     } catch (error) { // Add error class to the paragraph element and set error text
         pElement.classList.add("error");
@@ -71,6 +70,41 @@ const getChatResponse = async (incomingChatDiv) => {
     localStorage.setItem("all-chats", chatContainer.innerHTML);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
 }
+
+
+const getChatResponseOllama = async (incomingChatDiv) => {
+    const object = { "model": "orca-mini", "prompt": userText, "stream": false };
+    const response = await fetch('http://127.0.0.1:11434/api/generate', {
+        method: 'POST',
+        body: JSON.stringify(object),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const pElement = document.createElement("p");
+
+    try {
+        const responseText = await response.text();
+        const answer = JSON.parse(responseText);
+        // console.log(answer.response); // logs 'OK'
+        // console.log(answer.data);
+        // pElement.textContent = responseText.choices[0].text.trim();
+        pElement.textContent = answer.response;
+    } catch {
+        pElement.classList.add("error");
+        pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
+    }
+
+    incomingChatDiv.querySelector(".typing-animation").remove();
+    incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
+    localStorage.setItem("all-chats", chatContainer.innerHTML);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+  }
+
+// postName();
+
+
+
 
 const copyResponse = (copyBtn) => {
     // Copy the text content of the response to the clipboard
@@ -97,12 +131,13 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    getChatResponse(incomingChatDiv);
+    // getChatResponse(incomingChatDiv);
+    getChatResponseOllama(incomingChatDiv);
 }
 
 const handleOutgoingChat = () => {
     userText = chatInput.value.trim(); // Get chatInput value and remove extra spaces
-    if(!userText) return; // If chatInput is empty return from here
+    if (!userText) return; // If chatInput is empty return from here
 
     // Clear the input field and reset its height
     chatInput.value = "";
@@ -125,7 +160,7 @@ const handleOutgoingChat = () => {
 
 deleteButton.addEventListener("click", () => {
     // Remove the chats from local storage and call loadDataFromLocalstorage function
-    if(confirm("Are you sure you want to delete all the chats?")) {
+    if (confirm("Are you sure you want to delete all the chats?")) {
         localStorage.removeItem("all-chats");
         loadDataFromLocalstorage();
     }
@@ -140,9 +175,9 @@ themeButton.addEventListener("click", () => {
 
 const initialInputHeight = chatInput.scrollHeight;
 
-chatInput.addEventListener("input", () => {   
+chatInput.addEventListener("input", () => {
     // Adjust the height of the input field dynamically based on its content
-    chatInput.style.height =  `${initialInputHeight}px`;
+    chatInput.style.height = `${initialInputHeight}px`;
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
