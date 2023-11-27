@@ -17,13 +17,13 @@
 }
 .light-mode {
   --text-color: #343541;
-  --icon-color: #a9a9bc;
+  --icon-color: #161a1d;
   --icon-hover-bg: #f1f1f3;
-  --placeholder-color: #6c6c6c;
-  --outgoing-chat-bg: #FFFFFF;
-  --incoming-chat-bg: #F7F7F8;
-  --outgoing-chat-border: #FFFFFF;
-  --incoming-chat-border: #D9D9E3;
+  --placeholder-color: #161a1d;
+  --outgoing-chat-bg: #b1a7a6;
+  --incoming-chat-bg: #d3d3d3;
+  --outgoing-chat-border: #161a1d;
+  --incoming-chat-border: #161a1d;
 }
 body {
   background: var(--outgoing-chat-bg);
